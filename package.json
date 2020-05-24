@@ -1,0 +1,11 @@
+{
+  "name": "serverless-notes-application",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:ImperviousPanda/serverless-notes-application.git",
+  "author": "Britney Bogard <britney.devs@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "uuid": "^8.1.0"
+  }
+}

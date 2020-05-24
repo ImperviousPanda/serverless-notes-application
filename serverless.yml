@@ -1,0 +1,85 @@
+service: serverless-notes-application
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: dev
+  region: eu-west-1
+  iamRoleStatements:
+    - Effect: 'Allow'
+      Action:
+        - 'dynamodb:Query'
+        - 'dynamodb:Scan'
+        - 'dynamodb:GetItem'
+        - 'dynamodb:PutItem'
+        - 'dynamodb:UpdateItem'
+        - 'dynamodb:DeleteItem'
+      Resource:
+        - 'arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.stage}-${self:service}-*'
+        - 'arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.stage}-${self:service}-*/*'
+  environment:
+    REGION: ${self:provider.region}
+    NOTES_TABLE_NAME: !Ref Notes
+
+functions:
+  getNotes:
+    handler: handler.getNotes
+    events:
+      - http:
+          path: notes
+          method: get
+          cors: true
+  getNote:
+    handler: handler.getNote
+    events:
+      - http:
+          path: note/{id}
+          method: get
+          cors: true
+          request:
+            parameters:
+              paths:
+                id: true
+  createNote:
+    handler: handler.createNote
+    events:
+      - http:
+          path: note
+          method: post
+          cors: true
+  updateNote:
+    handler: handler.updateNote
+    events:
+      - http:
+          path: note/{id}
+          method: put
+          cors: true
+          request:
+            parameters:
+              paths:
+                id: true
+  deleteNote:
+    handler: handler.deleteNote
+    events:
+      - http:
+          path: note/{id}
+          method: delete
+          cors: true
+          request:
+            parameters:
+              paths:
+                id: true
+
+resources:
+  Resources:
+    Notes:
+      Type: 'AWS::DynamoDB::Table'
+      Properties:
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        BillingMode: PAY_PER_REQUEST
+        TableName: ${self:provider.stage}-${self:service}-notes

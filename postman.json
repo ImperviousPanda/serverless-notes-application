@@ -1,0 +1,116 @@
+{
+	"info": {
+		"_postman_id": "122783aa-7c58-4371-b30e-5e4a15010367",
+		"name": "Serverless Notes Application",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CreateNote",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"text\": \"I am a test note\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{endpoint}}/note",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"note"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateNote",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"text\": \"I am an updated test note\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{endpoint}}/note/bcb98a44-1a12-4c26-b58c-8906d5f4349c",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"note",
+						"bcb98a44-1a12-4c26-b58c-8906d5f4349c"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteNote",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{endpoint}}/note/de5ffc53-91a7-447c-bec5-c85478cb7a4d",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"note",
+						"de5ffc53-91a7-447c-bec5-c85478cb7a4d"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetNote",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{endpoint}}/note/d76f485c-3c15-4cb4-8f09-c5d6718916c0",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"note",
+						"d76f485c-3c15-4cb4-8f09-c5d6718916c0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetNotes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{endpoint}}/notes",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"notes"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
