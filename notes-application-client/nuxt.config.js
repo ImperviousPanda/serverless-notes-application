@@ -1,3 +1,5 @@
+import awsExports from "./aws-exports";
+
 export default {
   mode: "spa",
   /*
@@ -27,7 +29,7 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: ["@/plugins/aws-cognito.js"],
   /*
    ** Nuxt.js dev-modules
    */
@@ -39,7 +41,8 @@ export default {
     // Doc: https://github.com/nuxt-community/modules/tree/master/packages/bulma
     "@nuxtjs/bulma",
     "@nuxtjs/axios",
-    "@nuxtjs/auth"
+    "@nuxtjs/auth",
+    ["nuxt-amplify", awsExports]
   ],
   /*
    ** Build configuration

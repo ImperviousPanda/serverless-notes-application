@@ -35,6 +35,10 @@ module.exports.getNote = async (event) => {
   return {
     statusCode: 200,
     body: JSON.stringify(note),
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Credentials': '*'
+    }
   };
 };
 
@@ -45,6 +49,10 @@ module.exports.createNote = async (event) => {
       body: JSON.stringify({
         message: 'No body included in request',
       }),
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Credentials': '*'
+      }
     };
   }
 
@@ -63,6 +71,10 @@ module.exports.createNote = async (event) => {
   return {
     statusCode: 200,
     body: JSON.stringify(note),
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Credentials': '*'
+    }
   };
 };
 
@@ -73,6 +85,10 @@ module.exports.updateNote = async (event) => {
       body: JSON.stringify({
         message: 'No body included in request',
       }),
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Credentials': '*'
+      }
     };
   }
 
@@ -92,6 +108,10 @@ module.exports.updateNote = async (event) => {
   return {
     statusCode: 200,
     body: JSON.stringify(note),
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Credentials': '*'
+    }
   };
 };
 
