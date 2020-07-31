@@ -17,6 +17,10 @@ module.exports.getNotes = async () => {
   return {
     statusCode: 200,
     body: JSON.stringify(notes.Items),
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Credentials': '*'
+    }
   };
 };
 
@@ -130,5 +134,9 @@ module.exports.deleteNote = async (event) => {
   return {
     statusCode: 200,
     body: JSON.stringify({ message: 'Note successfully deleted' }),
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Credentials': '*'
+    }
   };
 };

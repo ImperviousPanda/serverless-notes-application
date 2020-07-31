@@ -4,11 +4,10 @@
       <div class="column is-6 is-offset-3">
         <amplify-authenticator
           v-if="authState !== 'signedin'"
-        ></amplify-authenticator>
+        />
         <div
           v-if="authState === 'signedin' && user"
-          class="box has-text-centered"
-        >
+          class="box has-text-centered">
           YOU're AUTHd
         </div>
       </div>
@@ -17,8 +16,8 @@
 </template>
 
 <script>
-import { onAuthUIStateChange } from "@aws-amplify/ui-components";
-import { API } from "@aws-amplify/api";
+import { onAuthUIStateChange } from '@aws-amplify/ui-components';
+import { API } from '@aws-amplify/api';
 
 export default {
   async created() {
@@ -27,26 +26,31 @@ export default {
       this.user = authData;
     });
 
-    const path = "/note";
-    const apiName = "NotesBackend";
-    const request = {
-      body: {
-        text: "test"
-      }
-    };
+    // const path = '/note';
+    // const apiName = 'NotesBackend';
+    // const request = {
+    //   body: {
+    //     text: 'test',
+    //   },
+    // };
 
-    const response = await API.post(apiName, path, request);
+    // const response = await API.post(apiName, path, request);
+
+    const path = '/notes';
+    const apiName = 'NotesBackend';
+
+    const response = await API.get(apiName, path);
     console.log(response);
   },
   data() {
     return {
       user: undefined,
-      authState: undefined
+      authState: undefined,
     };
   },
   beforeDestroy() {
     return onAuthUIStateChange;
-  }
+  },
 };
 </script>
 

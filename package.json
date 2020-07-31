@@ -1,7 +1,0 @@
-{
-  "dependencies": {
-    "@aws-amplify/ui-vue": "^0.2.10",
-    "aws-amplify": "^3.0.20",
-    "nuxt-amplify": "^1.0.1"
-  }
-}
